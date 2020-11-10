@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Le Hieu Le
-  Date: 07-Nov-20
-  Time: 6:04 PM
-  To change this template use File | Settings | File Templates.
---%>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -27,10 +20,10 @@
 <%@include file="adminHeader.jsp"%>
 <div id="test-body-mobile">
     <div id="contentHead">
-        <h1>User List</h1>
+        <h1>Admin Main Page</h1>
     </div>
     <div id="contentBody">
-        <div>Search Books: <input type="text" id="myInput"/></div>
+        <div>Search: <input type="text" id="myInput"/></div>
         <hr/>
         <div id="updMemberForm">
             <form>
