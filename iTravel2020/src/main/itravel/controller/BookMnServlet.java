@@ -1,9 +1,9 @@
-package itravel.controller;
+package controller;
 
 import com.google.gson.Gson;
-import itravel.model.Data;
-import itravel.model.DataFactory;
-import itravel.model.User;
+import model.Data;
+import model.DataFactory;
+import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

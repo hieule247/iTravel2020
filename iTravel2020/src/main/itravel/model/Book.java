@@ -1,4 +1,4 @@
-package itravel.model;
+package model;
 
 public class Book {
     private String id;
