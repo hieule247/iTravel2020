@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Itravel</title>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="resources/css/register.css" type="text/css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="resources/js/countries.js" type="text/javascript"></script>
     <script src="resources/js/register.js" type="text/javascript"></script>
 
@@ -55,7 +56,7 @@
                     <h3>Itravel, the best place to connect with travellers</h3>
                     <!--h4>Find your partner here</h4-->
                     <label for="fname">I am</label>
-                    <select name="gender">
+                    <select name="gender" id ="gender">
                         <option value="woman">Woman</option>
                         <option value="man">Man</option>
                         <option value="Other">Other</option>
@@ -94,7 +95,7 @@
 
 
                     <label class="select-inline">
-                        <select name='day' id='dayddl'>
+                        <select name='day' id='day'>
                             <option value='1'>1</option>
                             <option value='2'>2</option>
                             <option value='3'>3</option>
@@ -129,7 +130,7 @@
                         </select>
                     </label>
                     <label class="select-inline">
-                        <select name='month' id='monthddl'>
+                        <select name='month' id='month'>
                             <option value='1'>1</option>
                             <option value='2'>2</option>
                             <option value='3'>3</option>
@@ -145,7 +146,7 @@
                         </select>
                     </label>
                     <label class="select-inline">
-                        <select name='year' id='blah'>
+                        <select name='year' id='year'>
                             <option value='1947'>1947</option>
                             <option value='1948'>1948</option>
                             <option value='1949'>1949</option>
@@ -195,7 +196,7 @@
                             <option value='1993'>1993</option>
                         </select>
                     </label>
-                    <input type="submit" value="Next" onclick="checkForm();"/>
+                    <input id ="btnRegister" type="button" value="Next" />
 <%--                    <input type="reset" value="Reset"/>--%>
                 </div>
             </form>

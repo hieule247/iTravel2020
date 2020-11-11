@@ -1,7 +1,6 @@
 package model;
 
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -35,9 +34,10 @@ public class Data {
         return -1;
     }
 
-    public void addUser(String id, String userType, String fullName, String gender, String state, String city, String street,
+    public User addUser(String id, String userType, String fullName, String gender, String state, String city, String street,
                         String zipCode, Integer birthYear, String email, String password){
         users.add(new User(id, userType, fullName, gender, state, city, street, zipCode, birthYear, email, password));
+        return null;
     }
 
     public void updUser(String id, String userType, String fullName, String gender, String state, String city, String street,

@@ -1,10 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Le Hieu Le
-  Date: 07-Nov-20
-  Time: 6:16 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="model.User" %>
+
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+         pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -23,7 +23,11 @@
 
     <title>iTravel</title>
 </head>
-
+<%
+    //session.getAttribute("fname");
+    String data = (String) session.getAttribute("fname");
+    request.getSession().getAttribute("id");
+%>
 <body id="home" class=" client-js" style="">
 <%@include file="userHeader.jsp"%>
 <div id="test-body-mobile">
@@ -31,16 +35,17 @@
         <h1>User Travel info</h1>
     </div>
     <div id="contentBody">
-        <div>Search Books: <input type="text" id="myInput"/></div>
+        <div>Search: <input type="text" id="myInput"/></div>
         <hr/>
         <div id="updMemberForm">
             <form>
                 <table>
-                    <tr><td><label for="id">Book ID</label></td><td><input type="text" id="id" name="id"></td></tr>
-                    <tr><td><label for="title">Title</label></td><td><input type="text" id="title" name="title"></td></tr>
-                    <tr><td><label for="author">Author</label></td><td><input type="text" id="author" name="author"></td></tr>
-                    <tr><td><label for="subject">Subject</label></td><td><input type="text" id="subject" name="subject"></td></tr>
-                    <tr><td><label for="isbn">ISBN</label></td><td><input type="text" id="isbn" name="isbn"></td></tr>
+                    <tr><td><label for="id">User ID</label></td><td><input type="text" id="id" name="id" value="${request.getSession().getAttribute('id')}"></td></tr>
+                    <tr><td><label for="name">Name</label></td><td><input type="text" id="name" name="name"></td></tr>
+                    <tr><td><label for="gender">Gender</label></td><td><input type="text" id="gender" name="gender"></td></tr>
+                    <tr><td><label for="year">Year Of Birth</label></td><td><input type="text" id="year" name="year"></td></tr>
+                    <tr><td><label for="email">Email</label></td><td><input type="text" id="email" name="email"></td></tr>
+                    <tr><td><label for="address">Address</label></td><td><input type="text" id="address" name="address"></td></tr>
                     <tr><td></td><td>
                         <input type="hidden" value="false" id="isValid">
                         <input type="button" value="Add" id="add">
