@@ -1,9 +1,9 @@
-package controller;
+package itravel.controller;
 
 import com.google.gson.Gson;
-import model.Data;
-import model.DataFactory;
-import model.User;
+import itravel.model.Data;
+import itravel.model.DataFactory;
+import itravel.model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        model.Data data = model.DataFactory.getInstance();
+        Data data = DataFactory.getInstance();
         // Process register
         doRegister(data, request, response);
     }

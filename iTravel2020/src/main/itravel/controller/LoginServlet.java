@@ -1,8 +1,8 @@
-package controller;
+package itravel.controller;
 
-import model.Data;
-import model.DataFactory;
-import model.User;
+import itravel.model.Data;
+import itravel.model.DataFactory;
+import itravel.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,4 +1,4 @@
-package model;
+package itravel.model;
 
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;

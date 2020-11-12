@@ -1,8 +1,9 @@
-package controller;
+package itravel.controller;
 
 import com.google.gson.Gson;
-import model.Data;
-import model.User;
+import itravel.model.Data;
+import itravel.model.DataFactory;
+import itravel.model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class GetCurrentUserInfoServlet extends HttpServlet {
 //        request.setAttribute("url", "userTravelInfo.jsp");
 //        RequestDispatcher rd = getServletContext().getRequestDispatcher("signupForm.jsp");
 //        rd.forward(request, response);
-        model.Data data = model.DataFactory.getInstance();
+        Data data = DataFactory.getInstance();
         // Process register
         displayUserInfo(data, request, response);
     }
@@ -36,7 +37,7 @@ public class GetCurrentUserInfoServlet extends HttpServlet {
 //        System.out.println(item);
 //
 //        System.out.println(session.toString());
-        User user = (model.User) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         //System.out.println(user.getFullName()+", "+user.getEmail()+", "+user.getBirthYear());
         String respJson = new Gson().toJson(user);
         resp.setContentType("application/json");

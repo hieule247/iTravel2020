@@ -1,4 +1,4 @@
-package model;
+package itravel.model;
 
 
 import java.util.*;
