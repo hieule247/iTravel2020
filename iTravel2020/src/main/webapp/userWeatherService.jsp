@@ -31,50 +31,16 @@
         <h1>Weather Service</h1>
     </div>
     <div id="contentBody">
-        <div>Search Books: <input type="text" id="myInput"/></div>
-        <hr/>
-        <div id="updMemberForm">
-            <form>
-                <table>
-                    <tr><td><label for="id">Book ID</label></td><td><input type="text" id="id" name="id"></td></tr>
-                    <tr><td><label for="title">Title</label></td><td><input type="text" id="title" name="title"></td></tr>
-                    <tr><td><label for="author">Author</label></td><td><input type="text" id="author" name="author"></td></tr>
-                    <tr><td><label for="subject">Subject</label></td><td><input type="text" id="subject" name="subject"></td></tr>
-                    <tr><td><label for="isbn">ISBN</label></td><td><input type="text" id="isbn" name="isbn"></td></tr>
-                    <tr><td></td><td>
-                        <input type="hidden" value="false" id="isValid">
-                        <input type="button" value="Add" id="add">
-                        <input type="button" value="Update" id="upd">
-                        <input type="button" value="Delete" id="del">
-                    </td></tr>
-                </table>
-            </form>
-        </div>
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+        <div class="elfsight-app-0c5cf1aa-4eea-45b4-8f9c-5df59600c626"></div>
+
         <div id="tabsHistory" class="tabs autohash ui-tabs ui-corner-all ui-widget ui-widget-content">
 
             <div id="humans" aria-labelledby="ui-id-1" role="tabpanel"
                  class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false"
                  style="display: block;">
 
-                <table class="changeHistory" id="books">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>TITLE</th>
-                        <th>AUTHOR</th>
-                        <th>SUBJECT</th>
-                        <th>ISBN</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    </tbody>
-                </table>
-                <div class="historyPager small sansserif gray">
-                    <!-- <a href="/recentchanges/lists?page=2#all" rel="nofollow"><- Older</a>
-                    -->
-                    <br><input type="button" value="Export to Excel" id="toexcel">
-                </div>
+
             </div>
         </div>
     </div>
