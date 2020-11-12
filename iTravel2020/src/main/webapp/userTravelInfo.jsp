@@ -59,7 +59,7 @@
 
             		<div class="panel-body">
               			<div class="row">
-                			<div class="col-md-5"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                			<div class="col-md-5"> <img alt="User Pic" src="resources/images/bg/avatar.jpeg" class="img-circle img-responsive">
                 		
                 			<input type="button" value="Upload" onclick="chooseFile();">
                  		</div>
