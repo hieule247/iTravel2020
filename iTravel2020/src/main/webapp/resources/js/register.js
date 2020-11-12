@@ -1,5 +1,4 @@
 
-//var pwd2 = $('#pwd2');
 $(document).ready(function () {
     // console.log("Document is ready!!!");
     // onLoadInitData();
@@ -8,8 +7,6 @@ $(document).ready(function () {
 function onClick() {
     // Prepare parameters
     let $cmdType = "register";
-    // let $txtUserName = $("#txtUserName").val();
-    // let $txtPassword = $("#txtPassword").val();
     let $gender = $("#gender").val();
     let $state = $("#state").val();
     let $city = $("#city").val();
@@ -35,22 +32,30 @@ function onClick() {
     }
 }
 function checkPass(response) {
-    window.open("userTravelInfo.jsp");
+    console.log(response);
+    if(response.status == 'false'){
+        alert(response.message);
+    } else {
+        // alert("Register sucessfull");
+        location.href = "userTravelInfo.jsp";
+    }
 }
 function checkFail(response){
-    alert("Email has been used")
+    var json = JSON.parse(response.responseText);
+    console.log(json);
+    alert(json.message);
 }
-function dispMemberList(respJson) {
-    // Remove old Data
-    let $table = $('#members');
-    $table.find($('.member')).remove();
-    // Update new data
-    $.each(respJson, function(i, member){
-        // New Row
-        let $member = "<tr class=\"member\"><td>" + member.id + "</td><td>" + member.name + "</td><td>" + member.address + "</td><td>" + member.phone + "</td></tr>";
-        $("#members").append($member);
-    });
-}
+// function dispMemberList(respJson) {
+//     // Remove old Data
+//     let $table = $('#members');
+//     $table.find($('.member')).remove();
+//     // Update new data
+//     $.each(respJson, function(i, member){
+//         // New Row
+//         let $member = "<tr class=\"member\"><td>" + member.id + "</td><td>" + member.name + "</td><td>" + member.address + "</td><td>" + member.phone + "</td></tr>";
+//         $("#members").append($member);
+//     });
+// }
 
 // function onLoadInitData() {
 //     // Prepare parameters
