@@ -1,6 +1,8 @@
 package itravel.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DataFactory {
@@ -12,7 +14,7 @@ public class DataFactory {
                 if(instance == null) {
                     instance = new Data();
                     initUsersData();
-                    initBooksData();
+                    //initBooksData();
                     // initMembersData();
                 }
             }
@@ -32,6 +34,8 @@ public class DataFactory {
         instance.getUserList().add(new User("000-61-1775", "user", "Hailian Zhang", "M", "IA", "Fairfield", "1000 N 4th", "52557", 1990, "hzhang@miu.edu", "h"));
         instance.getUserList().add(new User("000-61-1525", "user", "Dang Thu Ha Le", "M", "IA", "Fairfield", "1000 N 4th", "52557", 1990, "dthle@miu.edu", "d"));
         instance.getUserList().add(new User("000-61-1635", "user", "Le Hieu Le", "M", "IA", "Fairfield", "1000 N 4th", "52557", 1990, "lle@mum.edu", "l"));
+        instance.getUserList().add(new User("000-61-1775", "user", "Hailian Zhang", "M", "IA", "Fairfield", "1000 N 4th", "52557", 1990, "hzhang@miu.edu", "h"));
+
     }
 
     private static void initBooksData (){
@@ -45,7 +49,7 @@ public class DataFactory {
             instance.getBookList().add(new Book(strID, strTitle, strAuthor, strSubject, strIsbn));
         }
     }
-/*
+
     private static void initMembersData (){
         for (int i = 1; i <= 10; i++)
         {
@@ -56,6 +60,8 @@ public class DataFactory {
             instance.getMemberList().add(new Member(strID, strName, strAddress, strPhone));
         }
     }
-*/
+
+
+
 
 }

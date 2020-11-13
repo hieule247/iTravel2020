@@ -1,5 +1,8 @@
 package itravel.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String id;
     private String userType;
@@ -12,6 +15,8 @@ public class User {
     private Integer birthYear;
     private String email;
     private String password;
+    private boolean activType = false;
+
 
     public User() {
         id          = "";
@@ -25,6 +30,7 @@ public class User {
         birthYear   = 1900;
         email       = "";
         password    = "";
+        activType = false;
     }
 
     public User(String id, String userType, String fullName, String gender, String state, String city, String street,
@@ -40,6 +46,7 @@ public class User {
         this.birthYear  = birthYear;
         this.email      = email;
         this.password   = password;
+       this.activType = false;
     }
 
     public String getId() {
@@ -129,4 +136,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public boolean getActivType() { return activType; }
+
+    public void setActivType(boolean activType) { this.activType = activType; }
+
+
 }

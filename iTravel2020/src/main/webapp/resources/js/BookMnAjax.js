@@ -63,7 +63,7 @@ function onDel() {
     let $cmdType = "del";
     let $id = $("#id").val();
     // post and receive data
-    $.post("BookMnServlet",
+    $.post("BookMnServlet",//url
         {cmdType: $cmdType, id:$id},
         dispBookList);
 }
@@ -89,7 +89,15 @@ function dispBookList(respJson) {
     $.each(respJson, function(i, book){
         // New Row
         let $aCheckOut = "<a href=bookCheckout.jsp?bookId=" + book.id + ">Checkout</a>";
-        let $book = "<tr class=\"book\"><td>" + book.id + "</td><td>" + book.title + "</td><td>" + book.author + "</td><td>" + book.subject + "</td><td>" + book.isbn + "</td><td>" + $aCheckOut + "</td></tr>";
+        let $book = "<tr class=\"book\"><td>"
+            + book.id + "</td><td>"
+            + book.title
+            + "</td><td>" + book.author
+            + "</td><td>" + book.subject
+            + "</td><td>" + book.isbn
+            + "</td><td>" + $aCheckOut
+            + "</td></tr>";
+
         $("#books").append($book);
     });
 }

@@ -7,14 +7,13 @@ import java.util.stream.Collectors;
 
 public class Data {
     private List<User> users;
-
     private List<Book> books;
     private ArrayList<Member> members;
+
     public Data(){
         users   = new ArrayList<>();
-
-        books   = new ArrayList<>();
-        members = new ArrayList<>();
+        //books   = new ArrayList<>();
+        //members = new ArrayList<>();
     }
 
     // ------------------- User Management
@@ -37,6 +36,7 @@ public class Data {
 
     public void addUser(String id, String userType, String fullName, String gender, String state, String city, String street,
                         String zipCode, Integer birthYear, String email, String password){
+
         users.add(new User(id, userType, fullName, gender, state, city, street, zipCode, birthYear, email, password));
     }
 
@@ -99,6 +99,14 @@ public class Data {
         // Not found or login error
         return null;
     }
+    public void updUserStates(String id, boolean status){
+        int curIdx = getUserIdx(id);
+        User curUser = getUser(id);
+
+        curUser.setActivType(status);
+        // Update
+        users.set(curIdx, curUser);
+    }
 
     // ------------------- Book Management
     public List<Book> getBookList(){
@@ -158,19 +166,20 @@ public class Data {
     }
 
     public int getMemberIdx(String id){
-/*
+
         return Integer.parseInt(members.parallelStream()
 
                 .map(b -> b.getId())
                 .filter(i -> i.equals(id)).findAny()
                 .orElse("-1"));
- */
+ /*
         for (int i=0; i < members.size(); i++){
             if (members.get(i).getId().equals(id))
                 return i;
         }
+
         // not found
-        return -1;
+        return -1;*/
     }
 
     public void addMember(String id, String name, String address, String phone){
@@ -200,5 +209,14 @@ public class Data {
                         || m.getAddress().toLowerCase().contains(name.toLowerCase())
                         || m.getPhone().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
+    }
+
+    public List<User> getDeactivUserList(){
+        List<User> deactivUserList = new ArrayList<>();
+        for(User user : users){
+            if(user.getActivType()== false)
+                deactivUserList.add(user);
+        }
+       return deactivUserList;
     }
 }

@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("admin.... login....SUCCESS ..... !!!!");
                 updateLoginSession(req, userId, userType, true);
                 // Redirect to Admin page
-                resp.sendRedirect("admin.jsp");
+                resp.sendRedirect("admin2.jsp");
             } else if (userType.equals("user")) {
                 System.out.println("user.... login....SUCCESS ..... !!!!");
                 updateLoginSession(req, userId, userType, true);
