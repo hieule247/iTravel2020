@@ -13,10 +13,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 // System.out.println("");
 
-@WebServlet("/loginServlet")
+@WebServlet({"/loginServlet", "/", "/login"})
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+        // doPost(req, resp);
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,6 +36,7 @@ public class LoginServlet extends HttpServlet {
         if (item == null) {
             // process error login
             System.out.println("login....FAIL!!!!");
+            resp.sendRedirect("login?error=true");
         } else {
             String userId   = item.getId();
             String userType = item.getUserType();

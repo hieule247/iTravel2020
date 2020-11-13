@@ -76,7 +76,6 @@
 									<tr><td></td><td>
 										<input type="hidden" value="false" id="isValid">
 										<input type="button" value="Edit" id="edit">
-
 									</td></tr>
 								</table>
         					</div>
