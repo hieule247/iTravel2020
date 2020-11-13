@@ -37,7 +37,7 @@ footer {
     .row.content {height:auto;}
 }
 .container-fluid {
-    padding-top: 1  s0px;
+    padding-top: 1px;
     padding-bottom:0;
 }
 .bg-1 {
@@ -77,4 +77,39 @@ input[type=button], input[type=submit] {
     text-decoration: none;
     margin: 10px 2px;
     cursor: pointer;
+}
+label{
+    color: #1abc9c;
+}
+.btn-large {
+    padding: 11px 19px;
+    font-size: 17.5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#imagePreview {
+    margin: 15px 0 0 0;
+    border: 2px solid #ddd;
+}
+
+input{
+    display:block;
+    margin-bottom:10px;
+}
+
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.center input{
+    width: 400px;
+}
+
+.hideform {
+    display: none;
 }

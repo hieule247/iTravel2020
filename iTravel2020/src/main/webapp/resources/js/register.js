@@ -1,7 +1,5 @@
 
 $(document).ready(function () {
-    // console.log("Document is ready!!!");
-    // onLoadInitData();
     $('#btnRegister').click(onClick);
 });
 function onClick() {
@@ -45,25 +43,7 @@ function checkFail(response){
     console.log(json);
     alert(json.message);
 }
-// function dispMemberList(respJson) {
-//     // Remove old Data
-//     let $table = $('#members');
-//     $table.find($('.member')).remove();
-//     // Update new data
-//     $.each(respJson, function(i, member){
-//         // New Row
-//         let $member = "<tr class=\"member\"><td>" + member.id + "</td><td>" + member.name + "</td><td>" + member.address + "</td><td>" + member.phone + "</td></tr>";
-//         $("#members").append($member);
-//     });
-// }
 
-// function onLoadInitData() {
-//     // Prepare parameters
-//     let $cmdType = "init";
-//     $.post("RegisterServlet",
-//         {cmdType: $cmdType},
-//         function () {alert("data loaded...!");});
-// }
 function updateStep(step){
 	if(step == 'step3'){
 		var ha = validateStep2();

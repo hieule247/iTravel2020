@@ -118,7 +118,7 @@ public class RegisterServlet extends HttpServlet {
 //        session.setAttribute("isLogged", isLogged);
         // Log tracking
         System.out.println("Updated session: " + user.getId() + ", " + user.getUserType() + ", " +user.getFullName()
-                + ", "+ user.getGender()+", "+ user.getState()+", "+ user.getCity()+", "+ user.getCity()
+                + ", "+ user.getGender()+", "+ user.getState()+", "+ user.getCity()+", "+ user.getZipCode()
                 +", "+ user.getStreet()+", "+ user.getStreet() +", "+ user.getBirthYear()
                 +", "+user.getEmail()+ ", "+ user.getPassword()+ ", "+isLogged);
     }
