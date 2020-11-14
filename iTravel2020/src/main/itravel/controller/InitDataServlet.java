@@ -27,13 +27,11 @@ public class InitDataServlet extends HttpServlet {
         String cmdType = req.getParameter("cmdType");
         // Check
         if (cmdType.equals("init")) {
-            doLoadInitUsers(data, resp);
-        }
-    }
+            System.out.println("........ Data khoi tao thanh cong");
+            // send data loaded to client
+            sendToClient(data, resp);
 
-    public void doLoadInitUsers(Data data, HttpServletResponse resp) throws IOException {
-        // send data to client
-        sendToClient(data, resp);
+        }
     }
 
     public void sendToClient(Data data, HttpServletResponse resp) throws IOException {

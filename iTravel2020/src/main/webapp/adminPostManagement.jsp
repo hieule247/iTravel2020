@@ -29,11 +29,12 @@
                 <div id="updMemberForm">
                     <form>
                         <table>
-                            <tr><td><label for="id">Book ID</label></td><td><input type="text" id="id" name="id"></td></tr>
+                            <tr><td><label for="id">Post ID</label></td><td><input type="text" id="id" name="id"></td></tr>
+                            <tr><td><label for="imagep">Image</label></td><td><input type="text" id="imagep" name="imagep"></td></tr>
                             <tr><td><label for="title">Title</label></td><td><input type="text" id="title" name="title"></td></tr>
-                            <tr><td><label for="author">Author</label></td><td><input type="text" id="author" name="author"></td></tr>
-                            <tr><td><label for="subject">Subject</label></td><td><input type="text" id="subject" name="subject"></td></tr>
-                            <tr><td><label for="isbn">ISBN</label></td><td><input type="text" id="isbn" name="isbn"></td></tr>
+                            <tr><td><label for="content">Content</label></td><td><input type="text" id="content" name="content"></td></tr>
+                            <tr><td><label for="category">Category</label></td><td><input type="text" id="category" name="category"></td></tr>
+                            <tr><td><label for="tags">Tags</label></td><td><input type="text" id="tags" name="tags"></td></tr>
                             <tr><td></td><td>
                                 <input type="hidden" value="false" id="isValid">
                                 <input type="button" value="Add" id="add">
@@ -46,14 +47,15 @@
                 <!-- List Display -->
                 <hr/>
                 <div>
-                    <table id="books" class="table">
+                    <table id="_posts" class="table">
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>IMAGE P</th>
                             <th>TITLE</th>
-                            <th>AUTHOR</th>
-                            <th>SUBJECT</th>
-                            <th>ISBN</th>
+                            <th>CONTENT</th>
+                            <th>CATEGORY</th>
+                            <th>TAGS</th>
                             <th></th>
                         </tr>
                         </thead>

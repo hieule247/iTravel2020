@@ -6,11 +6,13 @@ import java.util.stream.Collectors;
 
 public class Data {
     private List<User> users;
+    private List<_Post> _posts;
 
     private List<Book> books;
     private ArrayList<Member> members;
     public Data(){
         users   = new ArrayList<>();
+        _posts  = new ArrayList<>();
 
         books   = new ArrayList<>();
         members = new ArrayList<>();
@@ -98,6 +100,56 @@ public class Data {
         }
         // Not found or login error
         return null;
+    }
+
+    // ------------------- _Post Management
+    public List<_Post> get_PostList(){
+        return _posts;
+    }
+
+    public _Post get_Post(String id){
+        return _posts.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
+    }
+
+    public int get_PostIdx(String id){
+        for (int i=0; i < _posts.size(); i++){
+            if (_posts.get(i).getId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
+    }
+
+    public void add_Post(String id, String image, String title, String content, String category, String tags){
+        _posts.add(new _Post(id, image, title, content, category, tags));
+    }
+
+    public void upd_Post(String id, String image, String title, String content, String category, String tags){
+        int curIdx = get_PostIdx(id);
+        _Post cur_Post = get_Post(id);
+
+        cur_Post.setImage(image);
+        cur_Post.setTitle(title);
+        cur_Post.setContent(content);
+        cur_Post.setCategory(category);
+        cur_Post.setTags(tags);
+        // Update
+        _posts.set(curIdx, cur_Post);
+    }
+
+    public void del_Post(String id){
+        int idx = get_PostIdx(id);
+        if (idx != -1)
+            _posts.remove(idx);
+    }
+
+    public List<_Post> search_Post(String name){
+        return _posts.parallelStream()
+                .filter(b -> b.getTitle().toLowerCase().contains(name.toLowerCase())
+                        || b.getContent().toLowerCase().contains(name.toLowerCase())
+                        || b.getCategory().toLowerCase().contains(name.toLowerCase())
+                        || b.getTags().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     // ------------------- Book Management

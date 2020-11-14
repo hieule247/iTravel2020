@@ -12,6 +12,8 @@ public class User {
     private Integer birthYear;
     private String email;
     private String password;
+    // Using for admin
+    private String status; // active, deActive
 
     public User() {
         id          = "";
@@ -25,6 +27,8 @@ public class User {
         birthYear   = 1900;
         email       = "";
         password    = "";
+        // using for admin
+        status      = "active";
     }
 
     public User(String id, String userType, String fullName, String gender, String state, String city, String street,
@@ -40,6 +44,8 @@ public class User {
         this.birthYear  = birthYear;
         this.email      = email;
         this.password   = password;
+        // using for admin
+        this.status      = "active";
     }
 
     public String getId() {
@@ -128,5 +134,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

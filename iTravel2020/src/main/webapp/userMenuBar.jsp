@@ -14,10 +14,12 @@ Created by: Hieu Le, Ha Le, Hailian Zhang
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Activities</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="user_PostManagement.jsp">"Post Management"</a></li>
+                <li><a href="#">"Comment Management"</a></li>
+                <li><a href="#">"Follower List"</a></li>
+                <li><a href="userWeatherService.jsp">Weather</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

@@ -1,94 +1,35 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Le Hieu Le
-  Date: 07-Nov-20
-  Time: 6:19 PM
-  To change this template use File | Settings | File Templates.
---%>
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link href="resources/css/page-user.css" rel="stylesheet" type="text/css">
-    <link href="resources/css/main.css" rel="stylesheet" type="text/css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="resources/js/common.js"></script>
-    <script type="text/javascript" src="resources/js/lib.js"></script>
-    <script type="text/javascript" src="resources/js/BookMnAjax.js"></script>
-
-    <title>iTravel</title>
+    <link href="resources/css/user.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="resources/js/userTravelInfo.js"></script>
 </head>
+<body>
+<%@include file="userMenuBar.jsp"%>
 
-<body id="home" class=" client-js" style="">
-<%@include file="userHeader.jsp"%>
-<div id="test-body-mobile">
-    <div id="contentHead">
-        <h1>Weather Service</h1>
-    </div>
-    <div id="contentBody">
-        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-        <div class="elfsight-app-0c5cf1aa-4eea-45b4-8f9c-5df59600c626"></div>
-
-        <div id="tabsHistory" class="tabs autohash ui-tabs ui-corner-all ui-widget ui-widget-content">
-
-            <div id="humans" aria-labelledby="ui-id-1" role="tabpanel"
-                 class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false"
-                 style="display: block;">
-
-
-            </div>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <%@include file="userLContent.jsp"%>
+        <!-- Main content -->
+        <div class="col-md-8 text-left">
+            <h1>WEATHER</h1>
         </div>
-    </div>
-</div>
-
-
-
-
-<div class="clearfix"></div>
-
-
-<footer>
-    <div id="footer-content">
-
-        <hr>
-
-    </div>
-</footer>
-
-
-<div id="cboxOverlay" style="display: none;"></div>
-<div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
-    <div id="cboxWrapper">
         <div>
-            <div id="cboxTopLeft" style="float: left;"></div>
-            <div id="cboxTopCenter" style="float: left;"></div>
-            <div id="cboxTopRight" style="float: left;"></div>
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-0c5cf1aa-4eea-45b4-8f9c-5df59600c626"></div>
         </div>
-        <div style="clear: left;">
-            <div id="cboxMiddleLeft" style="float: left;"></div>
-            <div id="cboxContent" style="float: left;">
-                <div id="cboxTitle" style="float: left;"></div>
-                <div id="cboxCurrent" style="float: left;"></div><button type="button"
-                                                                         id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button
-                    id="cboxSlideshow"></button>
-                <div id="cboxLoadingOverlay" style="float: left;"></div>
-                <div id="cboxLoadingGraphic" style="float: left;"></div>
-            </div>
-            <div id="cboxMiddleRight" style="float: left;"></div>
-        </div>
-        <div style="clear: left;">
-            <div id="cboxBottomLeft" style="float: left;"></div>
-            <div id="cboxBottomCenter" style="float: left;"></div>
-            <div id="cboxBottomRight" style="float: left;"></div>
-        </div>
+        <!-- End Main content -->
     </div>
-    <div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
 </div>
-</body>
 
+<%@include file="footer.jsp"%>
+</body>
 </html>

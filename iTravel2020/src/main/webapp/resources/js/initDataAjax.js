@@ -1,11 +1,13 @@
 // alert("");
 $(document).ready(function () {
     // console.log("Document is ready!!!");
-    onLoadInitData();
+    alert("data loading ....!")
+    $('#btnStart').click(onLoadInitData);
 });
 
 function onLoadInitData() {
     // Prepare parameters
+    alert("data loading ....!")
     let $cmdType = "init";
     $.post("initDataServlet",
         {cmdType: $cmdType},
