@@ -7,12 +7,18 @@ import java.util.stream.Collectors;
 public class Data {
     private List<User> users;
     private List<_Post> _posts;
+    private List<CommentPost> comments;
+    private List<Follow> follows;
+    private List<WordFilter> wordFilters;
 
     private List<Book> books;
     private ArrayList<Member> members;
     public Data(){
         users   = new ArrayList<>();
         _posts  = new ArrayList<>();
+        comments  = new ArrayList<>();
+        follows  = new ArrayList<>();
+        wordFilters  = new ArrayList<>();
 
         books   = new ArrayList<>();
         members = new ArrayList<>();
@@ -120,11 +126,11 @@ public class Data {
         return -1;
     }
 
-    public void add_Post(String id, String image, String title, String content, String category, String tags){
-        _posts.add(new _Post(id, image, title, content, category, tags));
+    public void add_Post(String id, String userId, String image, String title, String content, String category, String tags){
+        _posts.add(new _Post(id, userId, image, title, content, category, tags));
     }
 
-    public void upd_Post(String id, String image, String title, String content, String category, String tags){
+    public void upd_Post(String id, String userId, String image, String title, String content, String category, String tags){
         int curIdx = get_PostIdx(id);
         _Post cur_Post = get_Post(id);
 
@@ -149,6 +155,144 @@ public class Data {
                         || b.getContent().toLowerCase().contains(name.toLowerCase())
                         || b.getCategory().toLowerCase().contains(name.toLowerCase())
                         || b.getTags().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    // ------------------- Comment Management
+    public List<CommentPost> getCommentList(){
+        return comments;
+    }
+
+    public CommentPost getComment(String id){
+        return comments.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
+    }
+
+    public int getCommentIdx(String id){
+        for (int i=0; i < comments.size(); i++){
+            if (comments.get(i).getId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
+    }
+
+    public void addComment(String id, String postId, String userId, String content){
+        comments.add(new CommentPost(id, postId, userId, content));
+    }
+
+    public void updComment(String id, String postId, String userId, String content){
+        int curIdx = getCommentIdx(id);
+        CommentPost curComment = getComment(id);
+
+        curComment.setPostId(postId);
+        curComment.setUserId(userId);
+        curComment.setContent(content);
+        // Update
+        comments.set(curIdx, curComment);
+    }
+
+    public void delComment(String id){
+        int idx = getCommentIdx(id);
+        if (idx != -1)
+            comments.remove(idx);
+    }
+
+    public List<CommentPost> searchComment(String name){
+        return comments.parallelStream()
+                .filter(b -> b.getId().toLowerCase().contains(name.toLowerCase())
+                        || b.getPostId().toLowerCase().contains(name.toLowerCase())
+                        || b.getUserId().toLowerCase().contains(name.toLowerCase())
+                        || b.getContent().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    // ------------------- Follow Management
+    public List<Follow> getFollowList(){
+        return follows;
+    }
+
+    public Follow getFollow(String id){
+        return follows.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
+    }
+
+    public int getFollowIdx(String id){
+        for (int i=0; i < follows.size(); i++){
+            if (follows.get(i).getId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
+    }
+
+    public void addFollow(String id, String travellerId, String userId){
+        follows.add(new Follow(id, travellerId, userId));
+    }
+
+    public void updFollow(String id, String travellerId, String userId){
+        int curIdx = getFollowIdx(id);
+        Follow curFollow = getFollow(id);
+
+        curFollow.setTravellerId(travellerId);
+        curFollow.setUserId(userId);
+        // Update
+        follows.set(curIdx, curFollow);
+    }
+
+    public void delFollow(String id){
+        int idx = getFollowIdx(id);
+        if (idx != -1)
+            follows.remove(idx);
+    }
+
+    public List<Follow> searchFollow(String name){
+        return follows.parallelStream()
+                .filter(b -> b.getId().toLowerCase().contains(name.toLowerCase())
+                        || b.getTravellerId().toLowerCase().contains(name.toLowerCase())
+                        || b.getUserId().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    // ------------------- Follow Management
+    public List<WordFilter> getWordFilterList(){
+        return wordFilters;
+    }
+
+    public WordFilter getWordFilter(String id){
+        return wordFilters.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
+    }
+
+    public int getWordFilterIdx(String id){
+        for (int i=0; i < wordFilters.size(); i++){
+            if (wordFilters.get(i).getId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
+    }
+
+    public void addWordFilter(String id, String value){
+        wordFilters.add(new WordFilter(id, value));
+    }
+
+    public void updWordFilter(String id, String value){
+        int curIdx = getWordFilterIdx(id);
+        WordFilter curItem = getWordFilter(id);
+
+        curItem.setValue(value);
+        // Update
+        wordFilters.set(curIdx, curItem);
+    }
+
+    public void delWordFilter(String id){
+        int idx = getWordFilterIdx(id);
+        if (idx != -1)
+            wordFilters.remove(idx);
+    }
+
+    public List<WordFilter> searchWordFilter(String name){
+        return wordFilters.parallelStream()
+                .filter(b -> b.getId().toLowerCase().contains(name.toLowerCase())
+                        || b.getValue().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
 

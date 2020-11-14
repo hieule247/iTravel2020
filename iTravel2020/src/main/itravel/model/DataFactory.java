@@ -13,8 +13,10 @@ public class DataFactory {
                     instance = new Data();
                     initUsersData();
                     init_PostsData();
+                    initCommentsData();
+                    initFollowsData();
+
                     initBooksData();
-                    // initMembersData();
                 }
             }
         }
@@ -39,12 +41,34 @@ public class DataFactory {
         for (int i = 1; i <= 30; i++)
         {
             String strID 	= String.format("%03d", i);
+            String strUserID= String.format("userId%03d", i);
             String strImage = String.format("Image %03d", i);
             String strTitle = String.format("Title %03d", i);
             String strContent = String.format("Content %03d", i);
             String strCategory = String.format("Category %03d", i);
             String strTags = String.format("Tags %03d", i);
-            instance.get_PostList().add(new _Post(strID, strImage, strTitle, strContent, strCategory, strTags));
+            instance.get_PostList().add(new _Post(strID, strUserID, strImage, strTitle, strContent, strCategory, strTags));
+        }
+    }
+
+    private static void initCommentsData (){
+        for (int i = 1; i <= 30; i++)
+        {
+            String strID 	= String.format("%03d", i);
+            String strPostID   = String.format("%03d", i);
+            String strUserID= String.format("userId%03d", i);
+            String strContent = String.format("Content %03d", i);
+            instance.getCommentList().add(new CommentPost(strID, strPostID, strUserID, strContent));
+        }
+    }
+
+    private static void initFollowsData (){
+        for (int i = 1; i <= 30; i++)
+        {
+            String strID 	= String.format("%03d", i);
+            String strTravellerID= String.format("userId%03d", i);
+            String strUserID= String.format("userId%03d", i);
+            instance.getFollowList().add(new Follow(strID, strTravellerID, strUserID));
         }
     }
 
@@ -59,17 +83,4 @@ public class DataFactory {
             instance.getBookList().add(new Book(strID, strTitle, strAuthor, strSubject, strIsbn));
         }
     }
-/*
-    private static void initMembersData (){
-        for (int i = 1; i <= 10; i++)
-        {
-            String strID 	= String.format("%03d", i);
-            String strName = String.format("Name %03d", i);
-            String strAddress = String.format("Address %03d", i);
-            String strPhone = String.format("Phone %03d", i);
-            instance.getMemberList().add(new Member(strID, strName, strAddress, strPhone));
-        }
-    }
-*/
-
 }

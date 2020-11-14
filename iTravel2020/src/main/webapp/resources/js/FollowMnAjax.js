@@ -9,58 +9,54 @@ $(document).ready(function () {
 function onLoadInitData() {
     // Prepare parameters
     let $cmdType = "init";
-    $.post("_PostMnServlet",
+    $.post("FollowMnServlet",
         {cmdType: $cmdType},
-        disp_PostList);
+        dispFollowList);
 }
 
 function onAdd() {
-    alert("ddddd");
     // Prepare parameters
     let $cmdType = "add";
     let $id = $("#id").val();
-    let $image = $("#image").val();
-    let $title = $("#title").val();
-    let $content = $("#content").val();
-    let $category = $("#category").val();
-    let $tags = $("#tags").val();
+    let $travellerId = $("#travellerId").val();
+    let $userId = $("#userId").val();
     // Check validate
     checkValidate();
     if ($('#isValid').val() === "false")
         return;
     // post and receive data
-    $.post("_PostMnServlet",
-        {cmdType: $cmdType, id:$id, image:$image, title:$title, content:$content, category:$category, tags:$tags},
-        disp_PostList);
+    $.post("FollowMnServlet",
+        {cmdType: $cmdType, id:$id, travellerId:$travellerId, userId:$userId},
+        dispFollowList);
 }
 
 function onUpd() {
     // Prepare parameters
     let $cmdType = "upd";
     let $id = $("#id").val();
-    let $image = $("#image").val();
-    let $title = $("#title").val();
+    let $travellerId = $("#travellerId").val();
+    let $userId = $("#userId").val();
     let $content = $("#content").val();
-    let $category = $("#category").val();
-    let $tags = $("#tags").val();
     // Check validate
     checkValidate();
     if ($('#isValid').val() === "false")
         return;
     // post and receive data
-    $.post("_PostMnServlet",
-        {cmdType: $cmdType, id:$id, image:$image, title:$title, content:$content, category:$category, tags:$tags},
-        disp_PostList);
+    $.post("FollowMnServlet",
+        {cmdType: $cmdType, id:$id, travellerId:$travellerId, userId:$userId},
+        dispFollowList);
 }
 
 function onDel() {
     // Prepare parameters
     let $cmdType = "del";
     let $id = $("#id").val();
+    let $travellerId = $("#travellerId").val();
+    let $userId = $("#userId").val();
     // post and receive data
-    $.post("_PostMnServlet",
+    $.post("FollowMnServlet",
         {cmdType: $cmdType, id:$id},
-        disp_PostList);
+        dispFolllowList);
 }
 
 function checkValidate() {
@@ -76,21 +72,19 @@ function checkValidate() {
     $('#isValid').val("true");
 }
 
-function disp_PostList(respJson) {
+function dispFollowList(respJson) {
     // Remove old Data
-    let $table = $('#_posts');
-    $table.find($('._post')).remove();
+    let $table = $('#follows');
+    $table.find($('.follow')).remove();
     // Update new data
     $.each(respJson, function(i, item){
         // New Row
-        let $row = "<tr class=\"_post\">"
+        let $row = "<tr class=\"follow\">"
             + "<td>" + item.id + "</td>"
-            + "<td>" + item.image + "</td>"
-            + "<td>" + item.title + "</td>"
+            + "<td>" + item.postId + "</td>"
+            + "<td>" + item.userId + "</td>"
             + "<td>" + item.content + "</td>"
-            + "<td>" + item.category + "</td>"
-            + "<td>" + item.tags + "</td>"
             + "</tr>";
-        $("#_posts").append($row);
+        $("#follow").append($row);
     });
 }

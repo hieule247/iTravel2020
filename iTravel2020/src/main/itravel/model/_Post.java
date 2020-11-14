@@ -2,6 +2,7 @@ package itravel.model;
 
 public class _Post {
     private String id;
+    private String userId;
     private String image;
     private String title;
     private String content;
@@ -12,6 +13,7 @@ public class _Post {
 
     public _Post() {
         this.id         = "";
+        this.userId     = "";
         this.image      = "";
         this.title      = "";
         this.content    = "";
@@ -21,8 +23,9 @@ public class _Post {
         this.status     = "active";
     }
 
-    public _Post(String id, String image, String title, String content, String category, String tags) {
+    public _Post(String id, String userId, String image, String title, String content, String category, String tags) {
         this.id         = id;
+        this.userId     = userId;
         this.image      = image;
         this.title      = title;
         this.content    = content;
@@ -38,6 +41,14 @@ public class _Post {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getImage() {

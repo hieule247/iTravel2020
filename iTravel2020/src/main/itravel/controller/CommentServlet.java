@@ -3,9 +3,7 @@ package itravel.controller;
 import com.google.gson.Gson;
 import itravel.model.Data;
 import itravel.model.DataFactory;
-import itravel.model.User;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
-@WebServlet("/_PostMnServlet")
-public class _PostMnServlet extends HttpServlet {
+@WebServlet("/CommentServlet")
+public class CommentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
@@ -30,64 +26,58 @@ public class _PostMnServlet extends HttpServlet {
         String cmdType = req.getParameter("cmdType");
         // Check
         if (cmdType.equals("init")) {
-            doLoadInit_Posts(data, req, resp);
+            doLoadInitComments(data, req, resp);
         } else if (cmdType.equals("add")){
-            doAdd_Post(data, req, resp);
+            doAddComment(data, req, resp);
         } else if (cmdType.equals("upd")){
-            doUpd_Post(data, req, resp);
+            doUpdComment(data, req, resp);
         } else if (cmdType.equals("del")){
-            doDel_Post(data, req, resp);
+            doDelComment(data, req, resp);
         }
     }
 
-    public void doLoadInit_Posts(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    public void doLoadInitComments(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         // send data to client
         sendToClient(data, req, resp);
     }
 
-    public void doAdd_Post(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doAddComment(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // Get Data from parameter
         String id       = req.getParameter("id");
+        String postId       = req.getParameter("postId");
         String userId   = "userId"; //
-        String image    = req.getParameter("image");
-        String title    = req.getParameter("title");
         String content  = req.getParameter("content");
-        String category = req.getParameter("category");
-        String tags     = req.getParameter("tags");
-        // Not Exist: Add new _Post
-        if (data.get_Post(id) == null)
-            data.add_Post(id, userId, image, title, content, category, tags);
+        // Not Exist: Add new
+        if (data.getComment(id) == null)
+            data.addComment(id, postId, userId, content);
         // send data to client
         sendToClient(data, req, resp);
     }
 
-    public void doUpd_Post(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doUpdComment(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // Get Data from parameter
-        String id = req.getParameter("id");
+        String id       = req.getParameter("id");
+        String postId   = req.getParameter("postId");
         String userId   = "userId"; //
-        String image = req.getParameter("image");
-        String title = req.getParameter("title");
         String content = req.getParameter("content");
-        String category = req.getParameter("category");
-        String tags = req.getParameter("tags");
-        // Update the _Post
-        data.upd_Post(id, userId, image, title, content, category, tags);
+        // Update the Comment
+        data.updComment(id, postId, userId, content);
         // Send data to client
         sendToClient(data, req, resp);
     }
 
-    public void doDel_Post(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doDelComment(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // Get Data from parameter
         String id = req.getParameter("id");
         // Delete the _Post
-        data.del_Post(id);
+        data.delComment(id);
         // send data to client
         sendToClient(data, req, resp);
     }
 
     public void sendToClient(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        String respJson = new Gson().toJson(data.get_PostList());
+        String respJson = new Gson().toJson(data.getCommentList());
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(respJson);

@@ -9,58 +9,55 @@ $(document).ready(function () {
 function onLoadInitData() {
     // Prepare parameters
     let $cmdType = "init";
-    $.post("_PostMnServlet",
+    $.post("CommentMnServlet",
         {cmdType: $cmdType},
-        disp_PostList);
+        dispCommentList);
 }
 
 function onAdd() {
-    alert("ddddd");
     // Prepare parameters
     let $cmdType = "add";
     let $id = $("#id").val();
-    let $image = $("#image").val();
-    let $title = $("#title").val();
+    let $postId = $("#postId").val();
+    let $userId = $("#userId").val();
     let $content = $("#content").val();
-    let $category = $("#category").val();
-    let $tags = $("#tags").val();
     // Check validate
     checkValidate();
     if ($('#isValid').val() === "false")
         return;
     // post and receive data
-    $.post("_PostMnServlet",
-        {cmdType: $cmdType, id:$id, image:$image, title:$title, content:$content, category:$category, tags:$tags},
-        disp_PostList);
+    $.post("CommentMnServlet",
+        {cmdType: $cmdType, id:$id, postId:$postId, userId:$userId, content:$content},
+        dispCommentList);
 }
 
 function onUpd() {
     // Prepare parameters
     let $cmdType = "upd";
     let $id = $("#id").val();
-    let $image = $("#image").val();
-    let $title = $("#title").val();
+    let $postId = $("#postId").val();
+    let $userId = $("#userId").val();
     let $content = $("#content").val();
-    let $category = $("#category").val();
-    let $tags = $("#tags").val();
     // Check validate
     checkValidate();
     if ($('#isValid').val() === "false")
         return;
     // post and receive data
-    $.post("_PostMnServlet",
-        {cmdType: $cmdType, id:$id, image:$image, title:$title, content:$content, category:$category, tags:$tags},
-        disp_PostList);
+    $.post("CommentMnServlet",
+        {cmdType: $cmdType, id:$id, postId:$postId, userId:$userId, content:$content},
+        dispCommentList);
 }
 
 function onDel() {
     // Prepare parameters
     let $cmdType = "del";
     let $id = $("#id").val();
+    let $postId = $("#postId").val();
+    let $userId = $("#userId").val();
     // post and receive data
-    $.post("_PostMnServlet",
+    $.post("CommentMnServlet",
         {cmdType: $cmdType, id:$id},
-        disp_PostList);
+        dispCommentList);
 }
 
 function checkValidate() {
@@ -76,21 +73,19 @@ function checkValidate() {
     $('#isValid').val("true");
 }
 
-function disp_PostList(respJson) {
+function dispCommentList(respJson) {
     // Remove old Data
-    let $table = $('#_posts');
-    $table.find($('._post')).remove();
+    let $table = $('#comments');
+    $table.find($('.comment')).remove();
     // Update new data
     $.each(respJson, function(i, item){
         // New Row
-        let $row = "<tr class=\"_post\">"
+        let $row = "<tr class=\"comment\">"
             + "<td>" + item.id + "</td>"
-            + "<td>" + item.image + "</td>"
-            + "<td>" + item.title + "</td>"
+            + "<td>" + item.postId + "</td>"
+            + "<td>" + item.userId + "</td>"
             + "<td>" + item.content + "</td>"
-            + "<td>" + item.category + "</td>"
-            + "<td>" + item.tags + "</td>"
             + "</tr>";
-        $("#_posts").append($row);
+        $("#comments").append($row);
     });
 }
