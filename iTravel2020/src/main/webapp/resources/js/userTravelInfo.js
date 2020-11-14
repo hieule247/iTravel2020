@@ -70,34 +70,34 @@ function editUserInfo(){
     let $year = $("#ebirthyear").val();
     console.log($year);
     if(verifyEditInfo()) {
-           console.log(verifyEditInfo());
-           $('.center').hide();
-           $('#show').show();
-           //let $cmdType = "edit";
-           console.log("run from here to test");
-           $.post("UserInfoServlet",
-               {
-                   cmdType : $cmdType, id: $id, gender: $gender, state: $state, city: $city, street: $street,
-                   zip: $zip, fname: $fname, email: $email, pwd: $pwd, year: $year
-               })
-               .done(function (user){
-                   console.log(user);
-                   if (user.status === 'false') {
-                       alert(user.message);
-                   }else {
-                       displayUserInfo(user);
-                       updateUserInfoInEditForm(user);
-                   }
+        console.log(verifyEditInfo());
+        $('.center').hide();
+        $('#show').show();
+        //let $cmdType = "edit";
+        console.log("run from here to test");
+        $.post("UserInfoServlet",
+            {
+                cmdType : $cmdType, id: $id, gender: $gender, state: $state, city: $city, street: $street,
+                zip: $zip, fname: $fname, email: $email, pwd: $pwd, year: $year
+            })
+            .done(function (user){
+                console.log(user);
+                if (user.status === 'false') {
+                    alert(user.message);
+                }else {
+                    displayUserInfo(user);
+                    updateUserInfoInEditForm(user);
+                }
 
-               })
+            })
 
-               .fail(function (error) {
-                   alert(error);
-               });
-       }
-       else {
-           console.log("failed to send data to servlet")
-       }
+            .fail(function (error) {
+                alert(error);
+            });
+    }
+    else {
+        console.log("failed to send data to servlet")
+    }
 
 
 }
@@ -122,15 +122,15 @@ function verifyEditInfo() {
     let email = $('#email').text();
     let password = $('#pwd').text();
     console.log(password + "test paw value");
-    console.log(ename.val() +"test value");
+    //console.log(ename.val() +"test value");
     if(ename==""||egender==""||ebirthYear===""||eemail===""||eemail===""||epassword===""
-    ||estreet===""||estate===""||ecity===""||ezipCode===""){
+        ||estreet===""||estate===""||ecity===""||ezipCode===""){
         alert("All field must be filed")
         return false;
     }
 
-    if(name===ename.val() && gender === egender.val() && birthYear=== ebirthYear.val() && email===eemail.val() && password===epassword.val()
-    && street===estreet.val() && state === estate.val() && city === ecity.val() && zipCode===ezipCode.val()){
+    if(name===ename && gender === egender && birthYear=== ebirthYear && email===eemail && password===epassword
+        && street===estreet && state === estate && city === ecity && zipCode===ezipCode){
         $('.center').hide();
         $('#show').show();
         return false;
@@ -139,14 +139,14 @@ function verifyEditInfo() {
         var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         return re.test(str);
     }
-    if(epassword.val() !=password){
-        if(!checkPassword(epassword.val())){
+    if(epassword !=password){
+        if(!checkPassword(epassword)){
             alert("The password you have entered is not valid! password must include 6 characters, at least 1 number, 1 uper/lower character");
             return false;
         }
     }
     if(email!=eemail){
-        const x=eemail.val();
+        const x=eemail;
         const atposition=x.indexOf("@");
         const dotposition=x.lastIndexOf(".");
         if (x==""||atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length) {
