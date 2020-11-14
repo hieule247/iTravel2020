@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link href="resources/css/admin.css" type="text/css" rel="stylesheet" />
-    <script type="text/javascript" src="resources/js/BookMnAjax.js"></script>
+    <script type="text/javascript" src="resources/js/WordFilterAjax.js"></script>
 
 </head>
 <body>

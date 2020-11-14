@@ -9,54 +9,49 @@ $(document).ready(function () {
 function onLoadInitData() {
     // Prepare parameters
     let $cmdType = "init";
-    $.post("FollowMnServlet",
+    $.post("WordFilterServlet",
         {cmdType: $cmdType},
-        dispFollowList);
+        dispWordFilterList);
 }
 
 function onAdd() {
     // Prepare parameters
     let $cmdType = "add";
     let $id = $("#id").val();
-    let $travellerId = $("#travellerId").val();
-    let $userId = $("#userId").val();
+    let $value = $("#value").val();
     // Check validate
     checkValidate();
-    if ($('#isValid').val() === "false")
+    if ($('#value').val() === "false")
         return;
     // post and receive data
-    $.post("FollowMnServlet",
-        {cmdType: $cmdType, id:$id, travellerId:$travellerId, userId:$userId},
-        dispFollowList);
+    $.post("WordFilterServlet",
+        {cmdType: $cmdType, id:$id, value:$value},
+        dispWordFilterList);
 }
 
 function onUpd() {
     // Prepare parameters
     let $cmdType = "upd";
     let $id = $("#id").val();
-    let $travellerId = $("#travellerId").val();
-    let $userId = $("#userId").val();
-    let $content = $("#content").val();
+    let $value = $("#value").val();
     // Check validate
     checkValidate();
     if ($('#isValid').val() === "false")
         return;
     // post and receive data
-    $.post("FollowMnServlet",
-        {cmdType: $cmdType, id:$id, travellerId:$travellerId, userId:$userId},
-        dispFollowList);
+    $.post("WordFilterServlet",
+        {cmdType: $cmdType, id:$id, value:$value},
+        dispWordFilterList);
 }
 
 function onDel() {
     // Prepare parameters
     let $cmdType = "del";
     let $id = $("#id").val();
-    let $travellerId = $("#travellerId").val();
-    let $userId = $("#userId").val();
     // post and receive data
-    $.post("FollowMnServlet",
+    $.post("WordFilterServlet",
         {cmdType: $cmdType, id:$id},
-        dispFolllowList);
+        dispWordFilterList);
 }
 
 function checkValidate() {
@@ -72,19 +67,17 @@ function checkValidate() {
     $('#isValid').val("true");
 }
 
-function dispFollowList(respJson) {
+function dispWordFilterList(respJson) {
     // Remove old Data
-    let $table = $('#follows');
-    $table.find($('.follow')).remove();
+    let $table = $('#wordfilters');
+    $table.find($('.wordfilter')).remove();
     // Update new data
     $.each(respJson, function(i, item){
         // New Row
-        let $row = "<tr class=\"follow\">"
+        let $row = "<tr class=\"wordfilter\">"
             + "<td>" + item.id + "</td>"
-            + "<td>" + item.postId + "</td>"
-            + "<td>" + item.userId + "</td>"
-            + "<td>" + item.content + "</td>"
+            + "<td>" + item.value + "</td>"
             + "</tr>";
-        $("#follows").append($row);
+        $("#wordfilters").append($row);
     });
 }
