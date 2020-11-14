@@ -45,38 +45,38 @@ function checkFail(response){
 }
 
 function updateStep(step){
-	if(step == 'step3'){
-		var ha = validateStep2();
-		if(ha == false){
-			return false;
-		}
-	}else if(step == 'submit'){
-	    var va = checkForm();
+    if(step == 'step3'){
+        var ha = validateStep2();
+        if(ha == false){
+            return false;
+        }
+    }else if(step == 'submit'){
+        var va = checkForm();
         console.log(va)
-	    if(va==false){
+        if(va==false){
 
-	        return false;
+            return false;
         }
     }
 
-	$('.step_panel').hide();
+    $('.step_panel').hide();
 
-	$('.'+step).show();
+    $('.'+step).show();
 
 
 }
 
 function validateStep2(){
-	var state = $('#state');
+    var state = $('#state');
     var city = $('#city');
     var zipCode = $('#zip');
     var street = $('#street');
 
-	if(state.val()==''||city.val()==''||zipCode.val()==''||street.val() == ''){
-		alert('Please input all your information');
-		return false;
-	}
-	return true;
+    if(state.val()==''||city.val()==''||zipCode.val()==''||street.val() == ''){
+        alert('Please input all your information');
+        return false;
+    }
+    return true;
 }
 
 
@@ -97,35 +97,35 @@ function checkForm() {
     const dotposition=x.lastIndexOf(".");
 
     if(name.val() == "") {
-      alert("Error: Username cannot be blank!");
-      name.focus();
-      return false;
+        alert("Error: Username cannot be blank!");
+        name.focus();
+        return false;
     }
 
     if (x!=y||x==""||y==""||atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
 
-    alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);
-    email.focus();
-    return false;
+        alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);
+        email.focus();
+        return false;
     }
     if(pwd.val() != "") {
-      if(!checkPassword(pwd.val())) {
-        alert("The password you have entered is not valid! password must include 6 characters, at least 1 number, 1 uper/lower character");
+        if(!checkPassword(pwd.val())) {
+            alert("The password you have entered is not valid! password must include 6 characters, at least 1 number, 1 uper/lower character");
+            pwd.focus();
+            return false;
+        }
+    } else {
+        alert("Error: Please check that you've entered your password!");
         pwd.focus();
         return false;
-      }
-    } else {
-      alert("Error: Please check that you've entered your password!");
-      pwd.focus();
-      return false;
     }
     return true;
 }
 function chooseFile() {
-      $("#fileInput").click();
+    $("#fileInput").click();
 }
 
-	
-	
 
-	
+
+
+
