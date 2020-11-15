@@ -1,14 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Itravel</title>
+    <title>iTravel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="resources/css/register.css" type="text/css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 <%--    <script src="/resources/js/countries.js" type="text/javascript"></script>--%>
-    <script src="../resources/js/register.js" type="text/javascript"></script>
+    <script src="resources/js/register.js" type="text/javascript"></script>
 
 
 </head>
